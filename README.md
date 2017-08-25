@@ -1,9 +1,11 @@
-# WhatsMyName
+# WhatsMyNamePackage
 This repository has the unified data required to perform user and username enumeration on various websites. 
 
 Content is in a JSON file and can easily be used in other projects such as the ones below:
 * [Recon-ng](https://bitbucket.org/LaNMaSteR53/recon-ng) - The [Profiler Module](https://bitbucket.org/LaNMaSteR53/recon-ng/src/7723096ce2301092906838ef73564e7907886748/modules/recon/profiles-profiles/profiler.py?at=master&fileviewer=file-view-default) grabs this JSON file and uses it. See https://webbreacher.com/2014/12/11/recon-ng-profiler-module/ for details. 
 * [Spiderfoot](https://github.com/smicallef/spiderfoot) uses this in the [sfp_account](https://github.com/smicallef/spiderfoot/blob/master/modules/sfp_accounts.py) module. 
+
+Currently these projects pull from the original WhatsMyName repository. 
 
 ## Installation
 
