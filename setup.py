@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='whats_my_name',
-    version='1.0.0',
+    version='1.0.1',
     description='Packaged version of WhatsMyName',
     maintainer='WebBreacher',
     license='GNU version 2',
