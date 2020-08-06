@@ -2,11 +2,11 @@ from setuptools import setup, find_packages
 
 setup(
     name='whats_my_name',
-    version='1.0.1',
+    version='2.0.0',
     description='Packaged version of WhatsMyName',
     maintainer='WebBreacher',
-    license='GNU version 2',
-    url='https://github.com/WebBreacher/WhatsMyName/',
+    license='Creative Commons ShareAlike 4.0',
+    url='https://github.com/rpigu-i/WhatsMyNamePackage',
     package_dir={'': 'src'},
     include_package_data=True,
     packages=find_packages('src'),
