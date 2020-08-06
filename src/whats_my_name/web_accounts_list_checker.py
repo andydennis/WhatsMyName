@@ -47,12 +47,15 @@ class WebAccountsListChecker():
         passed in to arg parse from command
         line
         """
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) '
-            'Chrome/45.0.2454.93 Safari/537.36'}
-
+        # Set HTTP Header info.
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0',
+                   'Accept' : 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                   'Accept-Language' : 'en-US,en;q=0.5',
+                   'Accept-Encoding' : 'gzip, deflate'
+                  }
+        
         parser = argparse.ArgumentParser(
-            description="This standalone script will look up a single username using the JSON file"
+            description="This script will look up a single username using the JSON file"
             " or will run a check of the JSON file for bad detection strings.")
         parser.add_argument(
             '-u',
