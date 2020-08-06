@@ -81,28 +81,35 @@ If you just want to run this script to check user names on sites and don't wish 
 ```
  $  python3 -m whats_my_name -u username
 Running
- -  174 sites found in file.
- -  Looking up https://about.me/username
-[+] Found user at https://about.me/username
- *  Skipping AdultFriendFinder - Marked as not valid.
- -  Looking up https://angel.co/username?utm_source=people
+ -  253 sites found in file.
+ -  Looking up https://www.7cups.com/@username
+[+] Found user at https://www.7cups.com/@username
+ -  Looking up https://asciinema.org/~username
+[+] Found user at https://asciinema.org/~username
+ -  Looking up https://audiojungle.net/user/username
+[+] Found user at https://audiojungle.net/user/username
+ -  Looking up https://www.biggerpockets.com/users/username
+[+] Found user at https://www.biggerpockets.com/users/username
+ -  Looking up https://www.bookcrossing.com/mybookshelf/username
+[+] Found user at https://www.bookcrossing.com/mybookshelf/username
+ -  Looking up https://www.buymeacoffee.com/username
+[+] Found user at https://www.buymeacoffee.com/username
+ -  Looking up https://www.championat.com/user/username/
       !  ERROR: BAD CODE AND STRING. Neither the HTTP response code or detection string worked.
- -  Looking up http://www.anobii.com/username/books
-      !  ERROR: BAD DETECTION STRING. "- aNobii</title>" was not found on resulting page.
- -  Looking up http://ask.fm/username
-[+] Found user at http://ask.fm/username
- -  Looking up https://username.atlassian.net/login
-      !  ERROR: BAD DETECTION STRING. "Unable to access your account" was not found on resulting page.
- -  Looking up https://username.atlassian.net/admin/users/sign-up
+ -  Looking up https://community.cloudflare.com/u/username
       !  ERROR: BAD CODE AND STRING. Neither the HTTP response code or detection string worked.
- -  Looking up https://audioboom.com/username
-^C !!!  You pressed Ctrl+C. Exiting script.
-------------
-The following previously "valid" sites had errors:
-     AngelList --> Bad detection code and string. Received Code: 404; Expected Code: 200.
-     Atlassian --> Bad detection string.
-     Atlassian Self-Signup --> Bad detection code and string. Received Code: 502; Expected Code: 200.
-     aNobil --> Bad detection string.
+ -  Looking up https://www.cnet.com/profiles/username/
+...
+[+] Found user at https://vero.co/username
+ -  Looking up https://www.tiktok.com/@username?lang=en
+      !  ERROR: BAD DETECTION STRING. "s Newest TikTok Videos</title>" was not found on resulting page.
+ -  Looking up https://mixi.jp/view_community.pl?id=username
+      !  ERROR: BAD DETECTION STRING. "| mixiコミュニティ</title>" was not found on resulting page.
+ -  Looking up https://www.blogger.com/profile/username
+      !  ERROR: BAD CODE AND STRING. Neither the HTTP response code or detection string worked.
+ -  Looking up https://armorgames.com/user/username
+[+] Found user at https://armorgames.com/user/username
+Finished
 ```
 
 ## Updates
