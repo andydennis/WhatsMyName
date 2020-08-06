@@ -5,7 +5,7 @@ This repository has the unified data required to perform user and username enume
 
 [![Open Source](https://img.shields.io/badge/Open%20Source-100%25-green.svg)](https://shields.io/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-green.svg)](https://github.com/GetStream/winds/graphs/commit-activity)
-[![Version](https://img.shields.io/badge/Version-1.6-orange)](https://github.com/GetStream/winds/graphs/commit-activity)
+[![Version](https://img.shields.io/badge/Version-2.0-orange)](https://github.com/GetStream/winds/graphs/commit-activity)
 
 * https://whatsmyname.app/ - [Chris Poulter](https://twitter.com/osintcombine) created this site which draws the project's JSON file into a gorgeous and easy to use web interface.
   * There are no ads.
