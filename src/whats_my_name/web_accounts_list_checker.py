@@ -80,7 +80,7 @@ class WebAccountsListChecker():
         Grab the JSON data and start
         process
         """
-        print "Running"
+        print ("Running")
         signal.signal(signal.SIGINT, self.signal_handler)
         requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
@@ -88,7 +88,7 @@ class WebAccountsListChecker():
         if self.args.site:
             self.process_sites()
         else:
-            print ' -  %s sites found in file.' % len(self.data['sites'])
+            print (' -  %s sites found in file.' % len(self.data['sites']))
             self.check_valid_and_known()
 
         if not self.args.username:
@@ -113,14 +113,14 @@ class WebAccountsListChecker():
             x for x in self.data['sites'] if x['name'].lower() in sites]
 
         if len(self.data['sites']) == 0:
-            print ' -  Sorry, the requested site or sites were not found in the list'
+            print (' -  Sorry, the requested site or sites were not found in the list')
             sys.exit()
 
         sites_not_found = len(sites) - len(self.data['sites'])
         if sites_not_found:
-            print ' -  WARNING: %d requested sites were not found in the list' % sites_not_found
+            print (' -  WARNING: %d requested sites were not found in the list' % sites_not_found)
         else:
-            print ' -  Checking %d sites' % len(self.data['sites'])
+            print (' -  Checking %d sites' % len(self.data['sites']))
             self.check_valid_and_known()
 
     def check_valid_and_known(self):
@@ -130,10 +130,10 @@ class WebAccountsListChecker():
         """
         for site in self.data['sites']:
             if not site['valid']:
-                print self.terminal_colors.CYAN + ' *  Skipping %s - Marked as not valid.' % site['name'] + self.terminal_colors.ENDC
+                print (self.terminal_colors.CYAN + ' *  Skipping %s - Marked as not valid.' % site['name'] + self.terminal_colors.ENDC)
                 continue
             if not site['known_accounts'][0]:
-                print self.terminal_colors.CYAN + ' *  Skipping %s - No valid user names to test.' % site['name'] + self.terminal_colors.ENDC
+                print (self.terminal_colors.CYAN + ' *  Skipping %s - No valid user names to test.' % site['name'] + self.terminal_colors.ENDC)
                 continue
 
             self.process_user_name(site)
@@ -167,10 +167,10 @@ class WebAccountsListChecker():
         code_match = False
         string_match = False
 
-        print ' -  Looking up %s' % url
+        print (' -  Looking up %s' % url)
         r = self.web_call(url)
         if isinstance(r, str):
-            print r
+            print (r)
             return
 
         if r.status_code == int(site['account_existence_code']):
@@ -181,35 +181,35 @@ class WebAccountsListChecker():
 
         if code_match and string_match:
             if self.args.username:
-                print self.terminal_colors.GREEN + '[+] Found user at %s' % url + self.terminal_colors.ENDC
+                print (self.terminal_colors.GREEN + '[+] Found user at %s' % url + self.terminal_colors.ENDC)
 
             self.check_account_exists(site)
         elif code_match and not string_match:
 
-            print self.terminal_colors.RED + '      !  ERROR: BAD DETECTION STRING. "%s" was not found on resulting page.' \
-                % site['account_existence_string'] + self.terminal_colors.ENDC
+            print (self.terminal_colors.RED + '      !  ERROR: BAD DETECTION STRING. "%s" was not found on resulting page.' \
+                % site['account_existence_string'] + self.terminal_colors.ENDC)
             self.overall_results[site['name']] = 'Bad detection string.'
             if self.args.stringerror:
                 file_name = 'se-' + site['name'] + '.' + uname
                 file_name = file_name.encode('ascii', 'ignore').decode('ascii')
                 error_file = codecs.open(file_name, 'w', 'utf-8')
                 error_file.write(r.text)
-                print "Raw data exported to file:" + file_name
+                print ("Raw data exported to file:" + file_name)
                 error_file.close()
         elif not code_match and string_match:
-            print self.terminal_colors.RED + '      !  ERROR: BAD DETECTION RESPONSE CODE. HTTP Response code different than ' \
-                'expected.' + self.terminal_colors.ENDC
+            print (self.terminal_colors.RED + '      !  ERROR: BAD DETECTION RESPONSE CODE. HTTP Response code different than ' \
+                'expected.' + self.terminal_colors.ENDC)
             self.overall_results[site['name']] = 'Bad detection code. Received Code: %s; Expected Code: %s.' % (
                 str(r.status_code), site['account_existence_code'])
         else:
-            print self.terminal_colors.RED + '      !  ERROR: BAD CODE AND STRING. Neither the HTTP response code or detection ' \
-                                'string worked.' + self.terminal_colors.ENDC
+            print (self.terminal_colors.RED + '      !  ERROR: BAD CODE AND STRING. Neither the HTTP response code or detection ' \
+                                'string worked.' + self.terminal_colors.ENDC)
             self.overall_results[site['name']] = 'Bad detection code and string. Received Code: %s; Expected Code: %s.' \
                                             % (str(r.status_code), site['account_existence_code'])
 
     def check_account_exists(self, site):
         """
-        print '     [+] Response code and Search Strings match expected.'
+        print ('     [+] Response code and Search Strings match expected.')
         Generate a random string to use in place of known_accounts
         """
         code_match = False
@@ -223,7 +223,7 @@ class WebAccountsListChecker():
         r_fp = self.web_call(url_fp)
 
         if isinstance(r_fp, str):
-            print r_fp
+            print (r_fp)
             return
 
         if r_fp.status_code == int(site['account_existence_code']):
@@ -232,9 +232,9 @@ class WebAccountsListChecker():
             string_match = True
 
         if code_match and string_match:
-            print '      -  Code: %s; String: %s' % (code_match, string_match)
-            print self.terminal_colors.RED + '      !  ERROR: FALSE POSITIVE DETECTED. Response code and Search Strings match ' \
-                'expected.' + self.terminal_colors.ENDC
+            print ('      -  Code: %s; String: %s' % (code_match, string_match))
+            print (self.terminal_colors.RED + '      !  ERROR: FALSE POSITIVE DETECTED. Response code and Search Strings match ' \
+                'expected.' + self.terminal_colors.ENDC)
             self.overall_results[site['name']] = 'False Positive'
         else:
             return
@@ -274,9 +274,9 @@ class WebAccountsListChecker():
         Print final output
         """
         if len(self.overall_results) > 0:
-            print '------------'
-            print 'The following previously "valid" sites had errors:'
+            print ('------------')
+            print ('The following previously "valid" sites had errors:')
             for site, results in sorted(self.overall_results.iteritems()):
-                print self.terminal_colors.YELLOW + '     %s --> %s' % (site, results) + self.terminal_colors.ENDC
+                print (self.terminal_colors.YELLOW + '     %s --> %s' % (site, results) + self.terminal_colors.ENDC)
         else:
-            print ":) No problems with the JSON file were found."
+            print (":) No problems with the JSON file were found.")
