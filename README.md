@@ -19,10 +19,10 @@ This repository has the unified data required to perform user and username enume
 
 ## Installation
 
-The code can be installed by cloning the repository and installing via pip
+The code can be installed by cloning the repository and installing via pip. Use pip3 for the latest version.
 
 ```
-pip install -e WhatsMyName
+pip3 install -e WhatsMyName
 ```
 
 
@@ -79,7 +79,7 @@ Here is an example of a site element:
 If you just want to run this script to check user names on sites and don't wish to use it in combination with another tool (like Recon-NG and/or Spiderfoot), then you can use the included Python script as shown below:
 
 ```
- $  python -m whats_my_name -u username
+ $  python3 -m whats_my_name -u username
 Running
  -  174 sites found in file.
  -  Looking up https://about.me/username
@@ -114,4 +114,10 @@ Please reach to me webbreacher {at} gmail {dot} com if you are interested.
 [@Munchko](https://github.com/Munchko/)<br>
 [@L0r3m1p5um](https://github.com/L0r3m1p5um/)<br>
 [@lehuff](https://github.com/lehuff/)<br>
-[@rpiguy](https://github.com/andydennis/)<br>
+[@arnydo](https://github.com/arnydo)<br>
+[@janbinx](https://github.com/janbinx/)<br>
+[@bcoles](https://github.com/bcoles)<br>
+[@Sector035](https://github.com/sector035/)<br>
+[@mccartney](https://github.com/mccartney)<br>
+[@salaheldinaz](https://github.com/salaheldinaz)<br>
+[@rpiguy](https://github.com/rpigu-i/)<br>
