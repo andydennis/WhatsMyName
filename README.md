@@ -69,8 +69,18 @@ Finished
 ```
 
 ## Updates
+
+WhatsMyName Repository:
+
 I update this project as I have time and would *LOVE* to have interested people help maintain and grow it. 
 Please reach to me webbreacher {at} gmail {dot} com if you are interested.
+
+WhatsMyNamePackage Repository:
+
+This is updated inline with the WhatsMyName repo and then published to pypi for those who would like a
+packaged version of the code for their Python environments/projects.
+
+
 
 ## Contributors
 [@WebBreacher](https://github.com/WebBreacher/)<br>
