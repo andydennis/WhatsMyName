@@ -9,6 +9,7 @@ import signal
 import sys
 import codecs
 import time
+import threading
 
 import pkg_resources
 from .b_colors import Bcolors
@@ -165,6 +166,7 @@ class WebAccountsListChecker():
         Pull the first user from known_accounts and replace the {account} with it
         """
         url_list = []
+        threads = []
 
         if self.args.username:
             url = site['check_uri'].replace("{account}", self.args.username)
@@ -178,7 +180,15 @@ class WebAccountsListChecker():
                 uname = each
 
         for url in url_list:
-            self.process_url_list(url, site)
+            x = threading.Thread(target=self.process_url_list, args=(url, site), daemon=True)
+            threads.append(x)
+            #self.process_url_list(url, site)
+
+        for thread in threads:
+            thread.start() 
+
+        for thread in threads:
+            thread.join()
 
     def process_url_list(self, url, site):
         """
