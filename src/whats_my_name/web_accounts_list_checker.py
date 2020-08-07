@@ -8,6 +8,8 @@ import string
 import signal
 import sys
 import codecs
+import time
+
 import pkg_resources
 from .b_colors import Bcolors
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
@@ -40,6 +42,7 @@ class WebAccountsListChecker():
     data = {}
     args = {}
     terminal_colors = {}
+    all_found_sites = []
 
     def __init__(self):
         """
@@ -74,6 +77,12 @@ class WebAccountsListChecker():
             '--site',
             nargs='*',
             help='[OPTIONAL] If this parameter is passed the script will check only the named site or list of sites.')
+        parser.add_argument(
+            '-o', 
+            '--output', 
+            help="Create text output file", 
+            action="store_true",
+            default=False)
         self.args = parser.parse_args()
         self.terminal_colors = Bcolors()
 
@@ -96,6 +105,15 @@ class WebAccountsListChecker():
 
         if not self.args.username:
             self.final_output()
+
+        if self.args.output and self.args.username:
+            outfile = '{}_{}.txt'.format(str(int(time.time())), self.args.username)
+            print(outfile)
+            fh = open(outfile, 'w')
+            fh.writelines(self.all_found_sites)
+            print('Raw data exported to file:' + outfile)
+            fh.close()
+
 
     def get_json_file(self):
         """
@@ -185,6 +203,7 @@ class WebAccountsListChecker():
         if code_match and string_match:
             if self.args.username:
                 print (self.terminal_colors.GREEN + '[+] Found user at %s' % url + self.terminal_colors.ENDC)
+                self.all_found_sites.append(url)
 
             self.check_account_exists(site)
         elif code_match and not string_match:
@@ -283,3 +302,4 @@ class WebAccountsListChecker():
                 print (self.terminal_colors.YELLOW + '     %s --> %s' % (site, results) + self.terminal_colors.ENDC)
         else:
             print (":) No problems with the JSON file were found.")
+

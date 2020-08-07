@@ -7,7 +7,7 @@ def main():
     """
     checker = WebAccountsListChecker()
     checker.run()
-    print "Finished"
+    print ("Finished")
 
 
 if __name__ == "__main__":
